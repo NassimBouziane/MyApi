@@ -4,7 +4,10 @@
   "description": "A E-commerce website ",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon",
+    "build":"",
+    "eslint":""
   },
   "author": "Jordan HOARAU/Nassim BOUZIANE",
   "license": "ISC",
