@@ -1,0 +1,4 @@
+#ignorer ces fichiers 
+/build
+#/src
+/node_modules
