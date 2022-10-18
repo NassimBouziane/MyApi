@@ -1,3 +1,5 @@
 #ignorer ces fichiers 
 /build
 /node_modules
+*.env
+*.sql
