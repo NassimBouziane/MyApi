@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "rmdir build /s /q & tsc ",
+    "build": "rm -r build & tsc ",
     "eslint": "eslint --fix ./src"
   },
   "author": "Jordan HOARAU/Nassim BOUZIANE",
@@ -18,11 +18,16 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "sequelize": "^6.25.2",
+    "sequelize-auto-migrations": "^1.0.3",
+    "sequelize-auto-migrations-v2": "^1.2.1",
     "sqlite3": "^5.1.2",
     "ts-node": "^10.9.1"
   },
   "repository": {
     "type": "git",
     "url": "git@rendu-git.etna-alternance.net:module-9179/activity-50057/group-990941"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.5.1"
   }
 }
