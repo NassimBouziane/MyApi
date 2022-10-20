@@ -1,15 +1,18 @@
-const express = require('express')
+let express = require('express')
 const app = express()
-const port = 3000
+let port = 3000
+const userRoute = require("./routes/users.routes")
+const categoriesRoute = require("./routes/categories.routes")
+const productsRoute = require ("./routes/products.routes")
+const ordersRoute  = require ("./routes/orders.routes")
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
+app.use('/user', userRoute);
+app.use("/product",productsRoute)
+app.use("/order",ordersRoute)
+app.use("/categories",categoriesRoute)
+
+  
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-
-app.post('/', (req, res) => {
-  res.send("i'm post request")
+  console.log(`Example router listening on port ${port}`)
 })
