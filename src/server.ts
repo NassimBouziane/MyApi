@@ -1,4 +1,5 @@
-const express = require('express');
+// eslint-disable-next-line prefer-const
+let express = require('express');
 
 const app = express();
 const port = 3000;
