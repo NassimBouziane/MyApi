@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon",
     "build": "rm -r build & tsc ",
-    "eslint": "eslint --fix ./src"
+    "eslint": "eslint --fix ./src",
+    "migrate": "ts-node ./src/database/migratation/migrate.ts"
   },
   "author": "Jordan HOARAU/Nassim BOUZIANE",
   "license": "ISC",
