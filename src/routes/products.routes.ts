@@ -1,14 +1,11 @@
 express = require('express');
+const { getAll, getById } = require('../controllers/products.controller');
 
 const routerProducts = express();
 
-routerProducts.get('/', (req, res) => {
-  res.send('je suis product');
-});
+routerProducts.get('/', getAll);
 
-routerProducts.get('/:id', (req, res) => {
-  res.send('je suis id');
-});
+routerProducts.get('/:id', getById);
 
 routerProducts.post('/', (req, res) => {
   res.send('je suis le post');
