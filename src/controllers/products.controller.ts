@@ -21,3 +21,9 @@ exports.getById = async function (req : Request, res: Response) {
   const productwithid = await product.findOne({ where: { id } });
   res.json(productwithid);
 };
+
+exports.create =async function(req: Request , res: Response) {
+  const addproduct = await product.create({ id:1,productName:"Bento",productPrice:"15",});
+res.send(addproduct);
+  
+} ;
