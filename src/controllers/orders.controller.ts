@@ -7,3 +7,4 @@ async function getAll(req: Request, res: Response);
 async function create(req: Request, res: Response);
 async function updateById(req: Request, res: Response);
 async function deleteById(req: Request, res: Response);
+
