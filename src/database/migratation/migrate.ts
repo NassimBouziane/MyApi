@@ -9,6 +9,6 @@ const Users = require('../models/User');
 const product = require('../models/Product');
 // Importation de tout les models
 async function migrate() {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ alter: true });
 }
 migrate();

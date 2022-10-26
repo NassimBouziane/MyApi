@@ -1,7 +1,8 @@
+/* eslint-disable import/no-import-module-exports */
+import { Request, Response } from 'express';
 import { Sequelize, sequelize } from '../database/config';
 import product from '../database/models/Product';
-import { Request } from "express"
-import { Response } from "express"
+
 express = require('express');
 
 // async function getById(req: Request, res: Response);
@@ -12,18 +13,17 @@ express = require('express');
 // async function updateById(req: Request, res: Response);
 // async function deleteById(req: Request, res: Response);
 
-exports.getAll = async function (req: Request, res: Response) {
+exports.getAll = async function getAll(req: Request, res: Response) {
   const test = await product.findAll();
   res.json(test);
 };
-exports.getById = async function (req : Request, res: Response) {
+exports.getById = async function getById(req : Request, res: Response) {
   const { id } = req.params;
   const productwithid = await product.findOne({ where: { id } });
   res.json(productwithid);
 };
 
-exports.create =async function(req: Request , res: Response) {
-  const addproduct = await product.create({ id:1,productName:"Bento",productPrice:"15",});
-res.send(addproduct);
-  
-} ;
+exports.create = async function create(req: Request, res: Response) {
+  const addproduct = await product.create({ id: 2, productName: 'Bento', productPrice: '15' });
+  res.send(addproduct);
+};
