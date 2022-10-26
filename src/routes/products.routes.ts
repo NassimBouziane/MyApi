@@ -1,5 +1,7 @@
 express = require('express');
-const { getAll, getById, create } = require('../controllers/products.controller');
+const {
+  getAll, getById, create, deleteById,
+} = require('../controllers/products.controller');
 
 const routerProducts = express();
 
@@ -13,8 +15,6 @@ routerProducts.patch('/:id', (req, res) => {
   res.send('je suis le patch');
 });
 
-routerProducts.delete('/:id', (req, res) => {
-  res.send('je suis delete');
-});
+routerProducts.delete('/:id', deleteById);
 
 module.exports = routerProducts;
