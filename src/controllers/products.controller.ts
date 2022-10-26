@@ -1,6 +1,5 @@
 /* eslint-disable import/no-import-module-exports */
 import { Request, Response } from 'express';
-import { Sequelize, sequelize } from '../database/config';
 import product from '../database/models/Product';
 
 express = require('express');
@@ -28,6 +27,28 @@ exports.create = async function create(req: Request, res: Response) {
   const { productName } = req.params;
   const { productPrice } = req.params;
   const { productCategory } = req.params;
-  const addproduct = await product.create({ id: `${id}`, productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}` });
-  res.send(addproduct);
+
+  product
+    .create({
+      id: `${id}`, productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`,
+    })
+    .then((addproduct) => {
+      res.send(addproduct);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+};
+
+exports.deleteById = async function deleteById(req: Request, res:Response) {
+  const { id } = req.params;
+
+  product
+    .destroy({ where: { id } })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      res.sendStatus(400);
+    });
 };
