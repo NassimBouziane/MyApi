@@ -24,6 +24,10 @@ exports.getById = async function getById(req : Request, res: Response) {
 };
 
 exports.create = async function create(req: Request, res: Response) {
-  const addproduct = await product.create({ id: 2, productName: 'Bento', productPrice: '15' });
+  const { id } = req.params;
+  const { productName } = req.params;
+  const { productPrice } = req.params;
+  const { productCategory } = req.params;
+  const addproduct = await product.create({ id: `${id}`, productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}` });
   res.send(addproduct);
 };
