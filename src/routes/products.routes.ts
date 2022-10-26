@@ -7,7 +7,7 @@ routerProducts.get('/', getAll);
 
 routerProducts.get('/:id', getById);
 
-routerProducts.post('/', create);
+routerProducts.post('/:id/:productName/:productPrice/:productCategory', create);
 
 routerProducts.patch('/:id', (req, res) => {
   res.send('je suis le patch');

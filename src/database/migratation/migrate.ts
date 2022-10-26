@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // npm run migrate pour migrer les models dans la base de données
 
 import { sequelize } from '../config';

@@ -11,19 +11,7 @@ const Category = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    wood: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    steel: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    glass: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    plastic: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
