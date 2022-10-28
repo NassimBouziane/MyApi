@@ -25,4 +25,3 @@ export const Users = sequelize.define(
 );
 
 export default Users;
-Users.sync();
