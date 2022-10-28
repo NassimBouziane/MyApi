@@ -21,12 +21,11 @@ const Order_Products = sequelize.define('Order_Products', {
 
 }, {
   sequelize,
+  timestamps: false,
 });
 
-// Order_Products.belongsTo(Orders);
-// Order_Products.belongsTo(product);
 product.hasMany(Order_Products);
 Orders.hasMany(Order_Products);
 
 export default Order_Products;
-Order_Products.sync();
+

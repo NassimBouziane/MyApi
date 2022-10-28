@@ -18,10 +18,9 @@ const Orders = sequelize.define('Orders', {
 
 }, {
   sequelize,
+  timestamps: false,
 });
 
 Orders.belongsTo(Users);
-// Orders.belongsToMany(product, { through: Order_Products });
-// product.belongsToMany(Orders, { through: Order_Products });
 export default Orders;
-Orders.sync();
+

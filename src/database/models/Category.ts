@@ -18,8 +18,8 @@ const Category = sequelize.define(
   },
   {
     sequelize,
+    timestamps: false,
   },
 );
 
 export default Category;
-Category.sync();
