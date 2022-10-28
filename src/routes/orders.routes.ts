@@ -2,24 +2,18 @@ express = require('express');
 
 const routerOrder = express();
 
-routerOrder.get('/', (req, res) => {
-  res.send('je suis order');
-});
+const {
+  getAllOrders, getByIdOrders, createOrders, deleteByIdOrders, updateByIdOrders,
+} = require('../controllers/orders.controller');
 
-routerOrder.get('/:id', (req, res) => {
-  res.send('je suis id');
-});
+routerOrder.get('/', getAllOrders);
 
-routerOrder.post('/', (req, res) => {
-  res.send('je suis le post');
-});
+routerOrder.get('/:id', getByIdOrders);
 
-routerOrder.patch('/:id', (req, res) => {
-  res.send('je suis le patch');
-});
+routerOrder.post('/:id/:orderdate/:userid', createOrders);
 
-routerOrder.delete('/:id', (req, res) => {
-  res.send('je suis delete');
-});
+routerOrder.put('/:id/:orderdate/:userid', updateByIdOrders);
+
+routerOrder.delete('/:id', deleteByIdOrders);
 
 module.exports = routerOrder;
