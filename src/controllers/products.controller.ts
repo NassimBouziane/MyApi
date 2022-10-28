@@ -4,14 +4,6 @@ import product from '../database/models/Product';
 
 express = require('express');
 
-// async function getById(req: Request, res: Response);
-// export default async function getAll(req: Request, res: Response) {
-//  res.json();
-// }
-// async function create(req: Request, res: Response);
-// async function updateById(req: Request, res: Response);
-// async function deleteById(req: Request, res: Response);
-
 exports.getAll = async function getAll(req: Request, res: Response) {
   const test = await product.findAll();
   res.json(test);
@@ -45,6 +37,20 @@ exports.deleteById = async function deleteById(req: Request, res:Response) {
 
   product
     .destroy({ where: { id } })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      res.sendStatus(400);
+    });
+};
+exports.updateById = async function updateById(req: Request, res:Response) {
+  const { id } = req.params;
+  const { productName } = req.params;
+  const { productPrice } = req.params;
+  const { productCategory } = req.params;
+
+  await product.update({ productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}` }, { where: { id } })
     .then(() => {
       res.sendStatus(200);
     })

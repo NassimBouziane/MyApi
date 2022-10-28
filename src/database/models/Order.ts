@@ -12,7 +12,7 @@ const Orders = sequelize.define('Orders', {
     primaryKey: true,
   },
   orderdate: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: false,
   },
 
