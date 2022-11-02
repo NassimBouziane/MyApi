@@ -2,7 +2,10 @@ express = require('express');
 
 const routerCategories = express();
 const {
-  getAllCategory, getByIdCategory, createCategory, deleteByIdCategory, updateByIdCategory,
+  createCategory, deleteByIdCategory, updateByIdCategory, 
+} = require('../services/category.service')
+const {
+  getAllCategory, getByIdCategory,
 } = require('../controllers/categories.controller');
 
 routerCategories.get('/', getAllCategory);

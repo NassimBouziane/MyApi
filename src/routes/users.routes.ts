@@ -1,8 +1,11 @@
 express = require('express');
 
 const routerUser = express();
+const { 
+  createUsers, deleteByIdUsers, updateByIdUsers,
+} = require ('../services/user.service')
 const {
-  getAllUsers, getByIdUsers, createUsers, deleteByIdUsers, updateByIdUsers,
+  getAllUsers, getByIdUsers, 
 } = require('../controllers/users.controller');
 
 routerUser.get('/', getAllUsers);

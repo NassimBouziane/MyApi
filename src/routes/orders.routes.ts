@@ -2,8 +2,12 @@ express = require('express');
 
 const routerOrder = express();
 
+const{
+  createOrders, deleteByIdOrders, updateByIdOrders,
+} = require("../services/order.service")
+
 const {
-  getAllOrders, getByIdOrders, createOrders, deleteByIdOrders, updateByIdOrders,
+  getAllOrders, getByIdOrders, 
 } = require('../controllers/orders.controller');
 
 routerOrder.get('/', getAllOrders);
