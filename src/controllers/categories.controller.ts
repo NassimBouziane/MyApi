@@ -13,3 +13,4 @@ exports.getByIdCategory = async function getById(req : Request, res: Response) {
   const Categorywithid = await Category.findOne({ where: { id } });
   res.json(Categorywithid);
 };
+
