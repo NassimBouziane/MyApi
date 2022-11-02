@@ -13,4 +13,3 @@ exports.getByIdOrders = async function getById(req : Request, res: Response) {
   const Orderswithid = await Orders.findOne({ where: { id } });
   res.json(Orderswithid);
 };
-

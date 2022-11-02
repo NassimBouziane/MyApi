@@ -31,4 +31,3 @@ export const product = sequelize.define(
 product.belongsTo(Category);
 
 export default product;
-

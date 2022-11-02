@@ -1,11 +1,11 @@
 express = require('express');
 const {
-  getAll, getById, 
+  getAll, getById,
 } = require('../controllers/products.controller');
 
 const {
   create, deleteById, updateById,
-} = require ('../services/product.service');
+} = require('../services/product.service');
 
 const routerProducts = express();
 

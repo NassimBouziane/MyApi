@@ -1,4 +1,6 @@
 /* eslint-disable import/no-import-module-exports */
+const jwt = require('jsonwebtoken');
+const secret = 'Koala';
 import { Request, Response } from 'express';
 import Users from '../database/models/User';
 
@@ -13,4 +15,15 @@ exports.getByIdUsers = async function getById(req : Request, res: Response) {
   const Userswithid = await Users.findOne({ where: { id } });
   res.json(Userswithid);
 };
+exports.login = async function login(req : Request, res: Response) {
+const { username } = req.params;
+const { password } = req.params;
+const accessToken = jwt.sign({ username: `${username}`}, secret, { expiresIn: '24H' });
 
+res.json({
+    accessToken
+});
+
+
+
+};

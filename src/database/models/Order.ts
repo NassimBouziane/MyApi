@@ -23,4 +23,3 @@ const Orders = sequelize.define('Orders', {
 
 Orders.belongsTo(Users);
 export default Orders;
-

@@ -28,4 +28,3 @@ product.hasMany(Order_Products);
 Orders.hasMany(Order_Products);
 
 export default Order_Products;
-

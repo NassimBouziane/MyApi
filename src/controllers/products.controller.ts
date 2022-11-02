@@ -13,4 +13,3 @@ exports.getById = async function getById(req : Request, res: Response) {
   const productwithid = await product.findOne({ where: { id } });
   res.json(productwithid);
 };
-
