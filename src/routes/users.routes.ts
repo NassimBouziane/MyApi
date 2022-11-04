@@ -1,18 +1,29 @@
-express = require('express');
+const express = require('express');
+
+import authenticateJWT from '../middlewares/authenticateJWT';
 
 const routerUser = express();
+
 const {
-  getAllUsers, getByIdUsers, createUsers, deleteByIdUsers, updateByIdUsers,
+  createUsers, deleteByIdUsers, updateByIdUsers,
+} = require('../services/user.service');
+const {
+  getAllUsers, getByIdUsers, login,
 } = require('../controllers/users.controller');
 
 routerUser.get('/', getAllUsers);
 
 routerUser.get('/:id', getByIdUsers);
 
-routerUser.post('/:id/:username/:password', createUsers);
+routerUser.post('/register/', createUsers); // REGISTER
+routerUser.post('/login/', login);
 
-routerUser.put('/:id/:username/:password', updateByIdUsers);
-
-routerUser.delete('/:id', deleteByIdUsers);
+routerUser.put('/',  (req, res, next) => {
+  authenticateJWT(req, res, updateByIdUsers);
+});
+routerUser.delete('/:id', (req, res, next) => {
+  authenticateJWT(req, res, deleteByIdUsers);
+});
 
 module.exports = routerUser;
+

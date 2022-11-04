@@ -1,8 +1,16 @@
 /* eslint-disable import/no-import-module-exports */
 import { Request, Response } from 'express';
 import Users from '../database/models/User';
+import authenticateJWT from '../middlewares/authenticateJWT';
 
-express = require('express');
+function next() {
+  console.log('FUNCTION NEXT');
+}
+const jwt = require('jsonwebtoken');
+
+const secret = 'Koala';
+
+const express = require('express');
 
 exports.getAllUsers = async function getAll(req: Request, res: Response) {
   const test = await Users.findAll();
@@ -14,45 +22,20 @@ exports.getByIdUsers = async function getById(req : Request, res: Response) {
   res.json(Userswithid);
 };
 
-exports.createUsers = async function create(req: Request, res: Response) {
-  const { id } = req.params;
-  const { username } = req.params;
-  const { password } = req.params;
+exports.login = async function login(req : Request, res: Response) {
+  const { username } = req.body;
+  const { password } = req.body;
+  const Userswithid = await Users.findOne({ where: { username } });
 
-  Users
-    .create({
-      id: `${id}`, username: `${username}`, password: `${password}`,
-    })
-    .then((addUsers) => {
-      res.send(addUsers);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-};
+  if (Userswithid === null) {
+    res.status(400).send('Invalid email or password');
+  } else if (Userswithid.username === username && Userswithid.password === password) {
+    const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
 
-exports.deleteByIdUsers = async function deleteById(req: Request, res:Response) {
-  const { id } = req.params;
-
-  Users
-    .destroy({ where: { id } })
-    .then(() => {
-      res.sendStatus(200);
-    })
-    .catch(() => {
-      res.sendStatus(400);
-    });
-};
-exports.updateByIdUsers = async function updateById(req: Request, res:Response) {
-  const { id } = req.params;
-  const { username } = req.params;
-  const { password } = req.params;
-
-  await Users.update({ username: `${username}`, password: `${password}` }, { where: { id } })
-    .then(() => {
-      res.sendStatus(200);
-    })
-    .catch(() => {
-      res.sendStatus(400);
-    });
+    authenticateJWT(req, res, next);
+    console.log(accessToken); // To retrieve the access token and then put it in the headers 
+    return accessToken;
+  } else if (Userswithid.password !== password || Userswithid !== username) {
+    res.status(400).send('Invalid email or password');
+  }
 };
