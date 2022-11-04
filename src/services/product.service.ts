@@ -2,13 +2,13 @@
 import { Request, Response } from 'express';
 import product from '../database/models/Product';
 
-express = require('express');
+const express = require('express');
 
 exports.create = async function create(req: Request, res: Response) {
-  const { id } = req.params;
-  const { productName } = req.params;
-  const { productPrice } = req.params;
-  const { productCategory } = req.params;
+  const { id } = req.body;
+  const { productName } = req.body;
+  const { productPrice } = req.body;
+  const { productCategory } = req.body;
 
   product
     .create({
@@ -35,10 +35,10 @@ exports.deleteById = async function deleteById(req: Request, res:Response) {
     });
 };
 exports.updateById = async function updateById(req: Request, res:Response) {
-  const { id } = req.params;
-  const { productName } = req.params;
-  const { productPrice } = req.params;
-  const { productCategory } = req.params;
+  const { id } = req.body;
+  const { productName } = req.body;
+  const { productPrice } = req.body;
+  const { productCategory } = req.body;
 
   await product.update({ productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}` }, { where: { id } })
     .then(() => {

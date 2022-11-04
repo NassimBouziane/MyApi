@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import Orders from '../database/models/Order';
 
-express = require('express');
+const express = require('express');
 
 exports.createOrders = async function create(req: Request, res: Response) {
-  const { id } = req.params;
-  const { orderdate } = req.params;
-  const { userid } = req.params;
+  const { id } = req.body;
+  const { orderdate } = req.body;
+  const { userid } = req.body;
 
   Orders
     .create({
@@ -33,9 +33,9 @@ exports.deleteByIdOrders = async function deleteById(req: Request, res:Response)
     });
 };
 exports.updateByIdOrders = async function updateById(req: Request, res:Response) {
-  const { id } = req.params;
-  const { orderdate } = req.params;
-  const { userid } = req.params;
+  const { id } = req.body;
+  const { orderdate } = req.body;
+  const { userid } = req.body;
 
   await Orders.update({ orderdate: `${orderdate}`, UserId: `${userid}` }, { where: { id } })
     .then(() => {

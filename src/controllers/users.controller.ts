@@ -1,10 +1,16 @@
 /* eslint-disable import/no-import-module-exports */
-const jwt = require('jsonwebtoken');
-const secret = 'Koala';
 import { Request, Response } from 'express';
 import Users from '../database/models/User';
+import authenticateJWT from '../middlewares/authenticateJWT';
 
-express = require('express');
+function next() {
+  console.log('FUNCTION NEXT');
+}
+const jwt = require('jsonwebtoken');
+
+const secret = 'Koala';
+
+const express = require('express');
 
 exports.getAllUsers = async function getAll(req: Request, res: Response) {
   const test = await Users.findAll();
@@ -15,15 +21,20 @@ exports.getByIdUsers = async function getById(req : Request, res: Response) {
   const Userswithid = await Users.findOne({ where: { id } });
   res.json(Userswithid);
 };
+
 exports.login = async function login(req : Request, res: Response) {
-const { username } = req.params;
-const { password } = req.params;
-const accessToken = jwt.sign({ username: `${username}`}, secret, { expiresIn: '24H' });
+  const { username } = req.body;
+  const { password } = req.body;
+  const Userswithid = await Users.findOne({ where: { username } });
 
-res.json({
-    accessToken
-});
+  if (Userswithid === null) {
+    res.status(400).send('Invalid email or password');
+  } else if (Userswithid.username === username && Userswithid.password === password) {
+    const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
 
-
-
+    authenticateJWT(req, res, next);
+    return accessToken;
+  } else if (Userswithid.password !== password || Userswithid !== username) {
+    res.status(400).send('Invalid email or password');
+  }
 };

@@ -1,5 +1,6 @@
-express = require('express');
+const express = require('express');
 
+import authenticateJWT from '../middlewares/authenticateJWT';
 const routerCategories = express();
 const {
   createCategory, deleteByIdCategory, updateByIdCategory,
@@ -12,10 +13,14 @@ routerCategories.get('/', getAllCategory);
 
 routerCategories.get('/:id', getByIdCategory);
 
-routerCategories.post('/:id/:name', createCategory);
 
-routerCategories.put('/:id/:name', updateByIdCategory);
-
-routerCategories.delete('/:id', deleteByIdCategory);
-
+routerCategories.post('/',(req, res, next) => {
+    authenticateJWT(req, res, createCategory);
+  });
+routerCategories.put('/', (req, res, next) => {
+  authenticateJWT(req, res, updateByIdCategory);
+});
+routerCategories.delete('/:id',(req, res, next) => {
+  authenticateJWT(req, res, deleteByIdCategory);
+});
 module.exports = routerCategories;

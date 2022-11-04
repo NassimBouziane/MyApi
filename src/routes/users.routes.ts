@@ -1,4 +1,6 @@
-express = require('express');
+const express = require('express');
+
+import authenticateJWT from '../middlewares/authenticateJWT';
 
 const routerUser = express();
 
@@ -13,11 +15,15 @@ routerUser.get('/', getAllUsers);
 
 routerUser.get('/:id', getByIdUsers);
 
-routerUser.post('/register/:id/:username/:password', createUsers); // REGISTER
-routerUser.post('/login/:username/:password', login);
+routerUser.post('/register/', createUsers); // REGISTER
+routerUser.post('/login/', login);
 
-routerUser.put('/:id/:username/:password', updateByIdUsers);
-
-routerUser.delete('/:id', deleteByIdUsers);
+routerUser.put('/',  (req, res, next) => {
+  authenticateJWT(req, res, updateByIdUsers);
+});
+routerUser.delete('/:id', (req, res, next) => {
+  authenticateJWT(req, res, deleteByIdUsers);
+});
 
 module.exports = routerUser;
+

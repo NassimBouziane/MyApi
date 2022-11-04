@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import Users from '../database/models/User';
 
-express = require('express');
+const express = require('express');
 
 exports.createUsers = async function create(req: Request, res: Response) {
-  const { id } = req.params;
-  const { username } = req.params;
-  const { password } = req.params;
+  const { id } = req.body;
+  const { username } = req.body;
+  const { password } = req.body;
 
   Users
     .create({
@@ -33,9 +33,9 @@ exports.deleteByIdUsers = async function deleteById(req: Request, res:Response) 
     });
 };
 exports.updateByIdUsers = async function updateById(req: Request, res:Response) {
-  const { id } = req.params;
-  const { username } = req.params;
-  const { password } = req.params;
+  const { id } = req.body;
+  const { username } = req.body;
+  const { password } = req.body;
 
   await Users.update({ username: `${username}`, password: `${password}` }, { where: { id } })
     .then(() => {

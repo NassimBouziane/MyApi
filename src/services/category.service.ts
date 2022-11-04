@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 import Category from '../database/models/Category';
 
-express = require('express');
+const express = require('express');
 
 exports.createCategory = async function create(req: Request, res: Response) {
-  const { id } = req.params;
-  const { name } = req.params;
+  const { id } = req.body;
+  const { name } = req.body;
+
 
   Category
     .create({
@@ -32,8 +33,8 @@ exports.deleteByIdCategory = async function deleteById(req: Request, res:Respons
     });
 };
 exports.updateByIdCategory = async function updateById(req: Request, res:Response) {
-  const { id } = req.params;
-  const { name } = req.params;
+  const { id } = req.body;
+  const { name } = req.body;
 
   await Category.update({ name: `${name}` }, { where: { id } })
     .then(() => {

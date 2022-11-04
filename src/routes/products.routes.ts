@@ -1,4 +1,7 @@
-express = require('express');
+import { Request, Response } from 'express';
+import authenticateJWT from '../middlewares/authenticateJWT';
+
+const express = require('express');
 const {
   getAll, getById,
 } = require('../controllers/products.controller');
@@ -13,10 +16,16 @@ routerProducts.get('/', getAll);
 
 routerProducts.get('/:id', getById);
 
-routerProducts.post('/:id/:productName/:productPrice/:productCategory', create);
+routerProducts.post('/', (req, res, next) => {
+  authenticateJWT(req, res, create);
+});
 
-routerProducts.put('/:id/:productName/:productPrice/:productCategory', updateById);
+routerProducts.put('/',  (req, res, next) => {
+  authenticateJWT(req, res, updateById);
+});
 
-routerProducts.delete('/:id', deleteById);
+routerProducts.delete('/:id',   (req, res, next) => {
+  authenticateJWT(req, res, deleteById);
+});
 
 module.exports = routerProducts;

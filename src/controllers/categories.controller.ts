@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import Category from '../database/models/Category';
 
-express = require('express');
+const express = require('express');
 
 exports.getAllCategory = async function getAll(req: Request, res: Response) {
   const test = await Category.findAll();
@@ -13,5 +13,3 @@ exports.getByIdCategory = async function getById(req : Request, res: Response) {
   const Categorywithid = await Category.findOne({ where: { id } });
   res.json(Categorywithid);
 };
-
-
