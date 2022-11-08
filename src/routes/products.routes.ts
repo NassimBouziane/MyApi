@@ -15,16 +15,16 @@ routerProducts.get('/', getAll);
 
 routerProducts.get('/:id', getById);
 
-routerProducts.post('/', (req, res) => {
+routerProducts.post('/', (req:any, res:any) => {
   authenticateJWT(req, res, create);
 });
 
-routerProducts.put('/', (req, res) => {
+routerProducts.put('/', (req:any, res:any) => {
   authenticateJWT(req, res, updateById);
 });
 
-routerProducts.delete('/:id', (req, res) => {
+routerProducts.delete('/:id', (req:any, res:any) => {
   authenticateJWT(req, res, deleteById);
 });
 
-module.exports = routerProducts;
+export default routerProducts;

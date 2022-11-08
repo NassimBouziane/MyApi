@@ -18,11 +18,11 @@ routerUser.get('/:id', getByIdUsers);
 routerUser.post('/register/', createUsers); // REGISTER
 routerUser.post('/login/', login);
 
-routerUser.put('/', (req, res) => {
+routerUser.put('/', (req:any, res:any) => {
   authenticateJWT(req, res, updateByIdUsers);
 });
-routerUser.delete('/:id', (req, res) => {
+routerUser.delete('/:id', (req:any, res:any) => {
   authenticateJWT(req, res, deleteByIdUsers);
 });
 
-module.exports = routerUser;
+export default routerUser;

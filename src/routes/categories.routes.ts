@@ -14,13 +14,13 @@ routerCategories.get('/', getAllCategory);
 
 routerCategories.get('/:id', getByIdCategory);
 
-routerCategories.post('/', (req, res) => {
+routerCategories.post('/', (req:any, res:any) => {
   authenticateJWT(req, res, createCategory);
 });
-routerCategories.put('/', (req, res) => {
+routerCategories.put('/', (req:any, res:any) => {
   authenticateJWT(req, res, updateByIdCategory);
 });
-routerCategories.delete('/:id', (req, res) => {
+routerCategories.delete('/:id', (req:any, res:any) => {
   authenticateJWT(req, res, deleteByIdCategory);
 });
-module.exports = routerCategories;
+export default routerCategories;

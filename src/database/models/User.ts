@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../config';
 
 export const Users = sequelize.define(
-  'User',
+  'Users',
   {
 
     id: {

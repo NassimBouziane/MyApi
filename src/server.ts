@@ -1,12 +1,12 @@
+import routerCategories from './routes/categories.routes';
+import routerOrder from './routes/orders.routes';
+import routerProducts from './routes/products.routes';
+import routerUser from './routes/users.routes';
 // eslint-disable-next-line prefer-const
 let express = require('express');
 
 const app = express();
 const port = 3000;
-const userRoute = require('./routes/users.routes');
-const categoriesRoute = require('./routes/categories.routes');
-const productsRoute = require('./routes/products.routes');
-const ordersRoute = require('./routes/orders.routes');
 
 app.use(express.json());
 app.use(
@@ -15,10 +15,10 @@ app.use(
   }),
 );
 
-app.use('/user', userRoute);
-app.use('/product', productsRoute);
-app.use('/order', ordersRoute);
-app.use('/categories', categoriesRoute);
+app.use('/user', routerUser);
+app.use('/product', routerProducts);
+app.use('/order', routerOrder);
+app.use('/categories', routerCategories);
 
 app.listen(port, () => {
   console.log(`Example router listening on port ${port}`);

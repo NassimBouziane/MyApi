@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import Orders from '../database/models/Order';
 
-exports.createOrders = async function create(req: Request, res: Response) {
+async function createOrder(req: Request, res: Response) {
   const { id } = req.body;
   const { orderdate } = req.body;
   const { userid } = req.body;
@@ -10,15 +10,15 @@ exports.createOrders = async function create(req: Request, res: Response) {
     .create({
       id: `${id}`, orderdate: `${orderdate}`, UserId: `${userid}`,
     })
-    .then((addOrders) => {
+    .then((addOrders:any) => {
       res.send(addOrders);
     })
-    .catch((err) => {
+    .catch((err:any) => {
       res.send(err);
     });
-};
+}
 
-exports.deleteByIdOrders = async function deleteById(req: Request, res:Response) {
+async function deleteByIdOrder(req: Request, res:Response) {
   const { id } = req.params;
 
   Orders
@@ -29,8 +29,8 @@ exports.deleteByIdOrders = async function deleteById(req: Request, res:Response)
     .catch(() => {
       res.sendStatus(400);
     });
-};
-exports.updateByIdOrders = async function updateById(req: Request, res:Response) {
+}
+async function updateByIdOrder(req: Request, res:Response) {
   const { id } = req.body;
   const { orderdate } = req.body;
   const { userid } = req.body;
@@ -42,4 +42,6 @@ exports.updateByIdOrders = async function updateById(req: Request, res:Response)
     .catch(() => {
       res.sendStatus(400);
     });
-};
+}
+
+export { createOrder, updateByIdOrder, deleteByIdOrder };

@@ -11,7 +11,7 @@ sequelize
   .then(() => {
     console.log('Connection réussie');
   })
-  .catch((err) => {
+  .catch((err:any) => {
     console.error('Connection ratée', err);
   });
 

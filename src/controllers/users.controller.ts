@@ -1,6 +1,5 @@
-/* eslint-disable import/no-import-module-exports */
 import { Request, Response } from 'express';
-import Users from '../database/models/User';
+import { Users } from '../database/models/User';
 import authenticateJWT from '../middlewares/authenticateJWT';
 
 function next() {
@@ -10,17 +9,17 @@ const jwt = require('jsonwebtoken');
 
 const secret = 'Koala';
 
-exports.getAllUsers = async function getAll(req: Request, res: Response) {
+async function getAllUsers(req: Request, res: Response) {
   const test = await Users.findAll();
   res.json(test);
-};
-exports.getByIdUsers = async function getById(req : Request, res: Response) {
+}
+async function getByIdUsers(req : Request, res: Response) {
   const { id } = req.params;
   const Userswithid = await Users.findOne({ where: { id } });
   res.json(Userswithid);
-};
+}
 
-exports.login = async function login(req : Request, res: Response) {
+async function login(req : Request, res: Response) {
   const { username } = req.body;
   const { password } = req.body;
   const Userswithid = await Users.findOne({ where: { username } });
@@ -37,4 +36,6 @@ exports.login = async function login(req : Request, res: Response) {
     res.status(400).send('Invalid email or password');
   }
   return false;
-};
+}
+
+export { getAllUsers, getByIdUsers, login };
