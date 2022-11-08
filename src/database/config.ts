@@ -1,4 +1,4 @@
-export const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize');
 require('dotenv').config({ path: 'src/database/myenv.env' });
 
 export const sequelize = new Sequelize(`${process.env.DATABASE_NAME}`, `${process.env.USER_NAME}`, `${process.env.PASSWORD}`, {
@@ -14,3 +14,5 @@ sequelize
   .catch((err) => {
     console.error('Connection ratée', err);
   });
+
+export { Sequelize };

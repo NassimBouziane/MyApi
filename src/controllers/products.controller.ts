@@ -2,8 +2,6 @@
 import { Request, Response } from 'express';
 import product from '../database/models/Product';
 
-const express = require('express');
-
 exports.getAll = async function getAll(req: Request, res: Response) {
   const test = await product.findAll();
   res.send(test);

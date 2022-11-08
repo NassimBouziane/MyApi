@@ -1,12 +1,9 @@
 import { Request, Response } from 'express';
 import Category from '../database/models/Category';
 
-const express = require('express');
-
 exports.createCategory = async function create(req: Request, res: Response) {
   const { id } = req.body;
   const { name } = req.body;
-
 
   Category
     .create({

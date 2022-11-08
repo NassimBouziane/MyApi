@@ -4,7 +4,7 @@
 import { sequelize } from '../config';
 
 const Category = require('../models/Category');
-const Order_Products = require('../models/Order_Products');
+const OrderProduct = require('../models/Order_Products');
 const Order = require('../models/Order');
 const Users = require('../models/User');
 const product = require('../models/Product');

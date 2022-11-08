@@ -8,12 +8,12 @@ const categoriesRoute = require('./routes/categories.routes');
 const productsRoute = require('./routes/products.routes');
 const ordersRoute = require('./routes/orders.routes');
 
-app.use(express.json()); 
-app.use(              
+app.use(express.json());
+app.use(
   express.urlencoded({
     extended: true,
-  })
-); 
+  }),
+);
 
 app.use('/user', userRoute);
 app.use('/product', productsRoute);

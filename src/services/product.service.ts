@@ -2,8 +2,6 @@
 import { Request, Response } from 'express';
 import product from '../database/models/Product';
 
-const express = require('express');
-
 exports.create = async function create(req: Request, res: Response) {
   const { id } = req.body;
   const { productName } = req.body;

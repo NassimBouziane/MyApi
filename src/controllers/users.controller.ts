@@ -10,8 +10,6 @@ const jwt = require('jsonwebtoken');
 
 const secret = 'Koala';
 
-const express = require('express');
-
 exports.getAllUsers = async function getAll(req: Request, res: Response) {
   const test = await Users.findAll();
   res.json(test);
@@ -33,9 +31,10 @@ exports.login = async function login(req : Request, res: Response) {
     const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
 
     authenticateJWT(req, res, next);
-    console.log(accessToken); // To retrieve the access token and then put it in the headers 
+    console.log(accessToken); // To retrieve the access token and then put it in the headers
     return accessToken;
-  } else if (Userswithid.password !== password || Userswithid !== username) {
+  } else {
     res.status(400).send('Invalid email or password');
   }
+  return false;
 };

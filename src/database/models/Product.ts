@@ -1,8 +1,6 @@
 import { DataTypes } from 'sequelize';
-import { Sequelize, sequelize } from '../config';
-import Orders from './Order';
+import { sequelize } from '../config';
 import Category from './Category';
-import Order_Products from './Order_Products';
 
 export const product = sequelize.define(
   'product',

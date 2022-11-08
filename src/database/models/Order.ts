@@ -1,8 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { Users } from './User';
-import { Sequelize, sequelize } from '../config';
-import Order_Products from './Order_Products';
-import product from './Product';
+import { sequelize } from '../config';
 
 const Orders = sequelize.define('Orders', {
 

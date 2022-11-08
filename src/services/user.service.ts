@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import Users from '../database/models/User';
 
-const express = require('express');
-
 exports.createUsers = async function create(req: Request, res: Response) {
   const { id } = req.body;
   const { username } = req.body;

@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import Orders from '../database/models/Order';
 
-const express = require('express');
-
 exports.createOrders = async function create(req: Request, res: Response) {
   const { id } = req.body;
   const { orderdate } = req.body;
