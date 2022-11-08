@@ -1,14 +1,15 @@
 import { DataTypes } from 'sequelize';
-import { Sequelize, sequelize } from '../config';
+import { sequelize } from '../config';
 
 export const Users = sequelize.define(
-  'User',
+  'Users',
   {
 
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -18,6 +19,7 @@ export const Users = sequelize.define(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: false,
     },
   },
   {

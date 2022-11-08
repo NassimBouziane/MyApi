@@ -1,26 +1,23 @@
 import { Request, Response } from 'express';
 import Category from '../database/models/Category';
 
-const express = require('express');
-
-exports.createCategory = async function create(req: Request, res: Response) {
+async function createCategory(req: Request, res: Response) {
   const { id } = req.body;
   const { name } = req.body;
-
 
   Category
     .create({
       id: `${id}`, name: `${name}`,
     })
-    .then((addCategory) => {
+    .then((addCategory:any) => {
       res.send(addCategory);
     })
-    .catch((err) => {
+    .catch((err:any) => {
       res.send(err);
     });
-};
+}
 
-exports.deleteByIdCategory = async function deleteById(req: Request, res:Response) {
+async function deleteByIdCategory(req: Request, res:Response) {
   const { id } = req.params;
 
   Category
@@ -31,8 +28,8 @@ exports.deleteByIdCategory = async function deleteById(req: Request, res:Respons
     .catch(() => {
       res.sendStatus(400);
     });
-};
-exports.updateByIdCategory = async function updateById(req: Request, res:Response) {
+}
+async function updateByIdCategory(req: Request, res:Response) {
   const { id } = req.body;
   const { name } = req.body;
 
@@ -43,4 +40,6 @@ exports.updateByIdCategory = async function updateById(req: Request, res:Respons
     .catch(() => {
       res.sendStatus(400);
     });
-};
+}
+
+export { createCategory, updateByIdCategory, deleteByIdCategory };

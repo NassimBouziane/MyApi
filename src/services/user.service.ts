@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
-import Users from '../database/models/User';
+import { Users } from '../database/models/User';
 
-const express = require('express');
-
-exports.createUsers = async function create(req: Request, res: Response) {
+async function createUsers(req: Request, res: Response) {
   const { id } = req.body;
   const { username } = req.body;
   const { password } = req.body;
@@ -12,15 +10,15 @@ exports.createUsers = async function create(req: Request, res: Response) {
     .create({
       id: `${id}`, username: `${username}`, password: `${password}`,
     })
-    .then((addUsers) => {
+    .then((addUsers:any) => {
       res.send(addUsers);
     })
-    .catch((err) => {
+    .catch((err:any) => {
       res.send(err);
     });
-};
+}
 
-exports.deleteByIdUsers = async function deleteById(req: Request, res:Response) {
+async function deleteByIdUser(req: Request, res:Response) {
   const { id } = req.params;
 
   Users
@@ -31,8 +29,8 @@ exports.deleteByIdUsers = async function deleteById(req: Request, res:Response) 
     .catch(() => {
       res.sendStatus(400);
     });
-};
-exports.updateByIdUsers = async function updateById(req: Request, res:Response) {
+}
+async function updateByIdUser(req: Request, res:Response) {
   const { id } = req.body;
   const { username } = req.body;
   const { password } = req.body;
@@ -44,4 +42,6 @@ exports.updateByIdUsers = async function updateById(req: Request, res:Response) 
     .catch(() => {
       res.sendStatus(400);
     });
-};
+}
+
+export { createUsers, deleteByIdUser, updateByIdUser };

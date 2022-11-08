@@ -1,10 +1,8 @@
 /* eslint-disable import/no-import-module-exports */
 import { Request, Response } from 'express';
-import product from '../database/models/Product';
+import { product } from '../database/models/Product';
 
-const express = require('express');
-
-exports.create = async function create(req: Request, res: Response) {
+async function createProduct(req: Request, res: Response) {
   const { id } = req.body;
   const { productName } = req.body;
   const { productPrice } = req.body;
@@ -14,15 +12,15 @@ exports.create = async function create(req: Request, res: Response) {
     .create({
       id: `${id}`, productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`,
     })
-    .then((addproduct) => {
+    .then((addproduct:any) => {
       res.send(addproduct);
     })
-    .catch((err) => {
+    .catch((err:any) => {
       res.send(err);
     });
-};
+}
 
-exports.deleteById = async function deleteById(req: Request, res:Response) {
+async function deleteByIdProduct(req: Request, res:Response) {
   const { id } = req.params;
 
   product
@@ -33,8 +31,8 @@ exports.deleteById = async function deleteById(req: Request, res:Response) {
     .catch(() => {
       res.sendStatus(400);
     });
-};
-exports.updateById = async function updateById(req: Request, res:Response) {
+}
+async function updateByIdProduct(req: Request, res:Response) {
   const { id } = req.body;
   const { productName } = req.body;
   const { productPrice } = req.body;
@@ -47,4 +45,6 @@ exports.updateById = async function updateById(req: Request, res:Response) {
     .catch(() => {
       res.sendStatus(400);
     });
-};
+}
+
+export { createProduct, deleteByIdProduct, updateByIdProduct };

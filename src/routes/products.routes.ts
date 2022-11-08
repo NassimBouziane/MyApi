@@ -1,4 +1,3 @@
-import { Request, Response } from 'express';
 import authenticateJWT from '../middlewares/authenticateJWT';
 
 const express = require('express');
@@ -16,16 +15,16 @@ routerProducts.get('/', getAll);
 
 routerProducts.get('/:id', getById);
 
-routerProducts.post('/', (req, res, next) => {
+routerProducts.post('/', (req:any, res:any) => {
   authenticateJWT(req, res, create);
 });
 
-routerProducts.put('/',  (req, res, next) => {
+routerProducts.put('/', (req:any, res:any) => {
   authenticateJWT(req, res, updateById);
 });
 
-routerProducts.delete('/:id',   (req, res, next) => {
+routerProducts.delete('/:id', (req:any, res:any) => {
   authenticateJWT(req, res, deleteById);
 });
 
-module.exports = routerProducts;
+export default routerProducts;
