@@ -5,26 +5,22 @@ const express = require('express');
 const routerOrder = express();
 
 const {
-  createOrders, deleteByIdOrders, updateByIdOrders,
-} = require('../services/order.service');
-
-const {
-  getAllOrders, getByIdOrders,
+  getAll, getById, create, deleteById, updateById,
 } = require('../controllers/orders.controller');
 
-routerOrder.get('/', getAllOrders);
+routerOrder.get('/', getAll);
 
-routerOrder.get('/:id', getByIdOrders);
+routerOrder.get('/:id', getById);
 
 routerOrder.post('/', (req:any, res:any) => {
-  authenticateJWT(req, res, createOrders);
+  authenticateJWT(req, res, create);
 });
 
 routerOrder.put('/', (req:any, res:any) => {
-  authenticateJWT(req, res, updateByIdOrders);
+  authenticateJWT(req, res, updateById);
 });
 routerOrder.delete('/:id', (req:any, res:any) => {
-  authenticateJWT(req, res, deleteByIdOrders);
+  authenticateJWT(req, res, deleteById);
 });
 
 export default routerOrder;

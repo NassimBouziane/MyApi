@@ -1,14 +1,28 @@
 import { Request, Response } from 'express';
 import Orders from '../database/models/Order';
 
-async function getAllOrders(req: Request, res: Response) {
+const { createOrder, deleteByIdOrder, updateByIdOrder } = require('../services/order.service');
+
+async function getAll(req: Request, res: Response) {
   const test = await Orders.findAll();
   res.json(test);
 }
-async function getByIdOrders(req : Request, res: Response) {
+async function getById(req : Request, res: Response) {
   const { id } = req.params;
   const Orderswithid = await Orders.findOne({ where: { id } });
   res.json(Orderswithid);
 }
+async function create(req: Request, res: Response) {
+  await createOrder(req, res);
+}
 
-export { getAllOrders, getByIdOrders };
+async function deleteById(req: Request, res:Response) {
+  await deleteByIdOrder(req, res);
+}
+async function updateById(req: Request, res:Response) {
+  await updateByIdOrder(req, res);
+}
+
+export {
+  getAll, getById, create, updateById, deleteById,
+};

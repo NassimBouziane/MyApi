@@ -2,18 +2,20 @@ import { Request, Response } from 'express';
 import { Users } from '../database/models/User';
 import authenticateJWT from '../middlewares/authenticateJWT';
 
+const jwt = require('jsonwebtoken');
+const { createUsers, deleteByIdUser, updateByIdUser } = require('../services/user.service');
+
 function next() {
   console.log('FUNCTION NEXT');
 }
-const jwt = require('jsonwebtoken');
 
 const secret = 'Koala';
 
-async function getAllUsers(req: Request, res: Response) {
+async function getAll(req: Request, res: Response) {
   const test = await Users.findAll();
   res.json(test);
 }
-async function getByIdUsers(req : Request, res: Response) {
+async function getById(req : Request, res: Response) {
   const { id } = req.params;
   const Userswithid = await Users.findOne({ where: { id } });
   res.json(Userswithid);
@@ -37,5 +39,17 @@ async function login(req : Request, res: Response) {
   }
   return false;
 }
+async function create(req: Request, res: Response) {
+  await createUsers(req, res);
+}
 
-export { getAllUsers, getByIdUsers, login };
+async function deleteById(req: Request, res:Response) {
+  await deleteByIdUser(req, res);
+}
+async function updateById(req: Request, res:Response) {
+  await updateByIdUser(req, res);
+}
+
+export {
+  getAll, getById, login, create, deleteById, updateById,
+};

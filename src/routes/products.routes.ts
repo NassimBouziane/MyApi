@@ -2,12 +2,8 @@ import authenticateJWT from '../middlewares/authenticateJWT';
 
 const express = require('express');
 const {
-  getAll, getById,
+  getAll, getById, create, deleteById, updateById,
 } = require('../controllers/products.controller');
-
-const {
-  create, deleteById, updateById,
-} = require('../services/product.service');
 
 const routerProducts = express();
 
