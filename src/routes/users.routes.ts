@@ -5,24 +5,21 @@ const express = require('express');
 const routerUser = express();
 
 const {
-  createUsers, deleteByIdUsers, updateByIdUsers,
-} = require('../services/user.service');
-const {
-  getAllUsers, getByIdUsers, login,
+  getAll, getById, login, create, deleteById, updateById,
 } = require('../controllers/users.controller');
 
-routerUser.get('/', getAllUsers);
+routerUser.get('/', getAll);
 
-routerUser.get('/:id', getByIdUsers);
+routerUser.get('/:id', getById);
 
-routerUser.post('/register/', createUsers); // REGISTER
+routerUser.post('/register/', create); // REGISTER
 routerUser.post('/login/', login);
 
 routerUser.put('/', (req:any, res:any) => {
-  authenticateJWT(req, res, updateByIdUsers);
+  authenticateJWT(req, res, updateById);
 });
 routerUser.delete('/:id', (req:any, res:any) => {
-  authenticateJWT(req, res, deleteByIdUsers);
+  authenticateJWT(req, res, deleteById);
 });
 
 export default routerUser;
