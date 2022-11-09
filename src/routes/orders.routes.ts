@@ -1,4 +1,5 @@
 import authenticateJWT from '../middlewares/authenticateJWT';
+// Authenticate function which check if the users has the good Acces token
 
 const express = require('express');
 

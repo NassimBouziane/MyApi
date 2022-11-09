@@ -2,8 +2,8 @@ import routerCategories from './routes/categories.routes';
 import routerOrder from './routes/orders.routes';
 import routerProducts from './routes/products.routes';
 import routerUser from './routes/users.routes';
-// eslint-disable-next-line prefer-const
-let express = require('express');
+// Importing all routes
+const express = require('express');
 
 const app = express();
 const port = 3000;
@@ -14,7 +14,7 @@ app.use(
     extended: true,
   }),
 );
-
+// Use of all routes called above
 app.use('/user', routerUser);
 app.use('/product', routerProducts);
 app.use('/order', routerOrder);

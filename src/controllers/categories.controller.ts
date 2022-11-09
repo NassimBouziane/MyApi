@@ -27,3 +27,4 @@ export {
   getAll, getById, create, updateById,
   deleteById,
 };
+// Exporting all functions to the routes.

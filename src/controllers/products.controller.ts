@@ -26,3 +26,4 @@ async function updateById(req: Request, res:Response) {
 export {
   getAll, getById, create, deleteById, updateById,
 };
+// Exporting all functions to the routes.

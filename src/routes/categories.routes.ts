@@ -1,11 +1,10 @@
 import authenticateJWT from '../middlewares/authenticateJWT';
+// Authenticate function which check if the users has the good Acces token
 
 const express = require('express');
 
 const routerCategories = express();
-// const {
-//   createCategory, deleteByIdCategory, updateByIdCategory,
-// } = require('../services/category.service');
+
 const {
   getAll, getById,
   create, deleteById, updateById,

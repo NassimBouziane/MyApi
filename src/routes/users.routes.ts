@@ -1,5 +1,5 @@
 import authenticateJWT from '../middlewares/authenticateJWT';
-
+// Authenticate function which check if the users has the good Acces token
 const express = require('express');
 
 const routerUser = express();
@@ -13,7 +13,7 @@ routerUser.get('/', getAll);
 routerUser.get('/:id', getById);
 
 routerUser.post('/register/', create); // REGISTER
-routerUser.post('/login/', login);
+routerUser.post('/login/', login); // LOGIN
 
 routerUser.put('/', (req:any, res:any) => {
   authenticateJWT(req, res, updateById);

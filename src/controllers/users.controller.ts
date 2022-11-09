@@ -30,6 +30,7 @@ async function login(req : Request, res: Response) {
     res.status(400).send('Invalid email or password');
   } else if (Userswithid.username === username && Userswithid.password === password) {
     const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
+    // Generating the accesToken according to the username and password and the secret word we have,
 
     authenticateJWT(req, res, next);
     console.log(accessToken); // To retrieve the access token and then put it in the headers
@@ -53,3 +54,4 @@ async function updateById(req: Request, res:Response) {
 export {
   getAll, getById, login, create, deleteById, updateById,
 };
+// Exporting all functions to the routes.
