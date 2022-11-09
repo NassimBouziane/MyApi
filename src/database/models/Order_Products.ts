@@ -26,5 +26,5 @@ const OrderProduct = sequelize.define('Order_Products', {
 
 product.hasMany(OrderProduct);
 Orders.hasMany(OrderProduct);
-
+// association many to many between orderproduct, product and orders
 export default OrderProduct;

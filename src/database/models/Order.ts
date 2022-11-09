@@ -20,4 +20,5 @@ const Orders = sequelize.define('Orders', {
 });
 
 Orders.belongsTo(Users);
+// Foreigne key between Orders and Users
 export default Orders;

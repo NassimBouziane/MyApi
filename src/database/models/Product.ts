@@ -27,5 +27,5 @@ export const product = sequelize.define(
 );
 
 product.belongsTo(Category);
-
+// Foreign key between product and category.
 export default product;

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Orders from '../database/models/Order';
 
+// Function create an order
 async function createOrder(req: Request, res: Response) {
   const { id } = req.body;
   const { orderdate } = req.body;
@@ -17,7 +18,7 @@ async function createOrder(req: Request, res: Response) {
       res.send(err);
     });
 }
-
+// Function delete a Order with his ID
 async function deleteByIdOrder(req: Request, res:Response) {
   const { id } = req.params;
 
@@ -30,6 +31,7 @@ async function deleteByIdOrder(req: Request, res:Response) {
       res.sendStatus(400);
     });
 }
+// Function update a Order with his ID
 async function updateByIdOrder(req: Request, res:Response) {
   const { id } = req.body;
   const { orderdate } = req.body;
@@ -43,5 +45,5 @@ async function updateByIdOrder(req: Request, res:Response) {
       res.sendStatus(400);
     });
 }
-
+// Exporting functions to the controller
 export { createOrder, updateByIdOrder, deleteByIdOrder };

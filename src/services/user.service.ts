@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Users } from '../database/models/User';
-
+// Function create user
 async function createUsers(req: Request, res: Response) {
   const { id } = req.body;
   const { username } = req.body;
@@ -17,7 +17,7 @@ async function createUsers(req: Request, res: Response) {
       res.send(err);
     });
 }
-
+// Function delete a user by his ID
 async function deleteByIdUser(req: Request, res:Response) {
   const { id } = req.params;
 
@@ -30,6 +30,7 @@ async function deleteByIdUser(req: Request, res:Response) {
       res.sendStatus(400);
     });
 }
+// Function Update the data of a user by his ID
 async function updateByIdUser(req: Request, res:Response) {
   const { id } = req.body;
   const { username } = req.body;
@@ -44,4 +45,4 @@ async function updateByIdUser(req: Request, res:Response) {
     });
 }
 
-export { createUsers, deleteByIdUser, updateByIdUser };
+export { createUsers, deleteByIdUser, updateByIdUser };// Exporting all functions to the controller

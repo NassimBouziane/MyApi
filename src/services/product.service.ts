@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import { product } from '../database/models/Product';
 
+// Function create a product
 async function createProduct(req: Request, res: Response) {
   const { id } = req.body;
   const { productName } = req.body;
@@ -19,7 +20,7 @@ async function createProduct(req: Request, res: Response) {
       res.send(err);
     });
 }
-
+// Function Delete a product with his ID
 async function deleteByIdProduct(req: Request, res:Response) {
   const { id } = req.params;
 
@@ -32,6 +33,7 @@ async function deleteByIdProduct(req: Request, res:Response) {
       res.sendStatus(400);
     });
 }
+// Function Update the data of a product with his ID
 async function updateByIdProduct(req: Request, res:Response) {
   const { id } = req.body;
   const { productName } = req.body;
@@ -46,5 +48,5 @@ async function updateByIdProduct(req: Request, res:Response) {
       res.sendStatus(400);
     });
 }
-
+// Exporting functions to the controller
 export { createProduct, deleteByIdProduct, updateByIdProduct };
