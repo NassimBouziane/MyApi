@@ -4,9 +4,10 @@ const jwt = require('jsonwebtoken');
 
 export default function authenticateJWT(req: Request, res: Response, next: Function) {
   const auth = req.headers.authorization;
-  if (auth === '') { // EMPTY TOKEN
-    res.sendStatus(401);
-  } else {
+  console.log(res.headersSent);
+  if (auth === '' && res.headersSent === false ) { // EMPTY TOKEN
+     res.sendStatus(401);
+  } else if(res.headersSent === false){
     try {
       const decoded = jwt.verify(auth, 'Koala');
       console.log(decoded);
