@@ -31,12 +31,8 @@ async function login(req : Request, res: Response) {
   } else if (Userswithid.username === username && Userswithid.password === password) {
     const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
     // Generating the accesToken according to the username and password and the secret word we have,
-    res.send(accessToken);
-  authenticateJWT(req, res, next);
-  
-  
-    //console.log(accessToken); // To retrieve the access token and then put it in the headers
-    
+    res.send(accessToken); // To retrieve the access token and then put it in the headers
+    authenticateJWT(req, res, next);
   } else {
     res.status(400).send('Invalid email or password');
   }
