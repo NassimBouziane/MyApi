@@ -5,8 +5,16 @@ import routerUser from './routes/users.routes';
 // Importing all routes
 const express = require('express');
 
+
 const app = express();
 const port = 3000;
+
+const cors = require("cors");
+const corsOptions ={
+  origin: "http://localhost:3001/",
+  optionSuccessStatus : 200
+}
+app.use(cors(corsOptions))
 
 app.use(express.json());
 app.use(
