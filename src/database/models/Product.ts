@@ -10,6 +10,7 @@ export const product = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     productName: {
       type: DataTypes.STRING,
