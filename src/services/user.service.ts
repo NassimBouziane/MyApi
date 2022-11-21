@@ -2,13 +2,13 @@ import { Request, Response } from 'express';
 import { Users } from '../database/models/User';
 // Function create user
 async function createUsers(req: Request, res: Response) {
-  const { id } = req.body;
+  // const { id } = req.body;
   const { username } = req.body;
   const { password } = req.body;
 
   Users
     .create({
-      id: `${id}`, username: `${username}`, password: `${password}`,
+      username: `${username}`, password: `${password}`,
     })
     .then((addUsers:any) => {
       res.send(addUsers);

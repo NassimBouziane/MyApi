@@ -4,14 +4,13 @@ import { product } from '../database/models/Product';
 
 // Function create a product
 async function createProduct(req: Request, res: Response) {
-  const { id } = req.body;
   const { productName } = req.body;
   const { productPrice } = req.body;
   const { productCategory } = req.body;
 
   product
     .create({
-      id: `${id}`, productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`,
+      productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`,
     })
     .then((addproduct:any) => {
       res.send(addproduct);
