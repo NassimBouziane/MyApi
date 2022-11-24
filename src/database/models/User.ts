@@ -11,16 +11,35 @@ export const Users = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    firstName:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    password: {
+    email:{      
       type: DataTypes.STRING,
       allowNull: false,
+      unique:true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,    
       unique: false,
     },
+    phoneNumber:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
+    },
+
   },
   {
     sequelize,

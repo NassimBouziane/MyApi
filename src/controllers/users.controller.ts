@@ -22,14 +22,18 @@ async function getById(req : Request, res: Response) {
 }
 
 async function login(req : Request, res: Response) {
-  const { username } = req.body;
-  const { password } = req.body;
+  const {firstName} = req.body;
+  const {lastName} = req.body;
+  const {username} = req.body;
+  const {email} = req.body
+  const {password} = req.body;
+  const {numberPhone} = req.body;
   const Userswithid = await Users.findOne({ where: { username } });
 
   if (Userswithid === null) {
     res.status(400).send('Invalid email or password');
   } else if (Userswithid.username === username && Userswithid.password === password) {
-    const accessToken = jwt.sign({ username: `${username}`, password: `${password}` }, secret, { expiresIn: '24H' });
+    const accessToken = jwt.sign({firstName: `${firstName}`, lastName:`${lastName}` , username: `${username}`,email:`${email}`, password: `${password}`,phoneNumber: `${numberPhone}` }, secret, { expiresIn: '24H' });
     // Generating the accesToken according to the username and password and the secret word we have,
     res.send(accessToken); // To retrieve the access token and then put it in the headers
     authenticateJWT(req, res, next);

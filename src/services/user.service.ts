@@ -3,12 +3,16 @@ import { Users } from '../database/models/User';
 // Function create user
 async function createUsers(req: Request, res: Response) {
   // const { id } = req.body;
-  const { username } = req.body;
-  const { password } = req.body;
+  const {firstName} = req.body;
+  const {lastName} = req.body;
+  const {username} = req.body;
+  const {email} = req.body
+  const {password} = req.body;
+  const {phoneNumber} = req.body;
 
   Users
     .create({
-      username: `${username}`, password: `${password}`,
+      firstName: `${firstName}`, lastName:`${lastName}` , username: `${username}`,email:`${email}`, password: `${password}`,phoneNumber: `${phoneNumber}`,
     })
     .then((addUsers:any) => {
       res.send(addUsers);
