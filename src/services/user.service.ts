@@ -3,16 +3,16 @@ import { Users } from '../database/models/User';
 // Function create user
 async function createUsers(req: Request, res: Response) {
   // const { id } = req.body;
-  const {firstName} = req.body;
-  const {lastName} = req.body;
-  const {username} = req.body;
-  const {email} = req.body
-  const {password} = req.body;
-  const {phoneNumber} = req.body;
+  const { firstName } = req.body;
+  const { lastName } = req.body;
+  const { username } = req.body;
+  const { email } = req.body;
+  const { password } = req.body;
+  const { phoneNumber } = req.body;
 
   Users
     .create({
-      firstName: `${firstName}`, lastName:`${lastName}` , username: `${username}`,email:`${email}`, password: `${password}`,phoneNumber: `${phoneNumber}`,
+      firstName: `${firstName}`, lastName: `${lastName}`, username: `${username}`, email: `${email}`, password: `${password}`, phoneNumber: `${phoneNumber}`,
     })
     .then((addUsers:any) => {
       res.send(addUsers);
@@ -37,10 +37,15 @@ async function deleteByIdUser(req: Request, res:Response) {
 // Function Update the data of a user by his ID
 async function updateByIdUser(req: Request, res:Response) {
   const { id } = req.body;
+  const { firstName } = req.body;
+  const { lastName } = req.body;
   const { username } = req.body;
+  const { email } = req.body;
   const { password } = req.body;
-
-  await Users.update({ username: `${username}`, password: `${password}` }, { where: { id } })
+  const { phoneNumber } = req.body;
+  await Users.update({
+    firstName: `${firstName}`, lastName: `${lastName}`, username: `${username}`, email: `${email}`, password: `${password}`, phoneNumber: `${phoneNumber}`,
+  }, { where: { id } })
     .then(() => {
       res.sendStatus(200);
     })
