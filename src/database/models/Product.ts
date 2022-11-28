@@ -20,6 +20,22 @@ export const product = sequelize.define(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    isBottle: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 0,
+        max: 1,
+      },
+    },
+    isAccessory: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 0,
+        max: 1,
+      },
+    },
   },
   {
     sequelize,

@@ -7,10 +7,12 @@ async function createProduct(req: Request, res: Response) {
   const { productName } = req.body;
   const { productPrice } = req.body;
   const { productCategory } = req.body;
+  const { isBottle } = req.body;
+  const { isAccessory } = req.body;
 
   product
     .create({
-      productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`,
+      productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}`
     })
     .then((addproduct:any) => {
       res.send(addproduct);
@@ -38,8 +40,10 @@ async function updateByIdProduct(req: Request, res:Response) {
   const { productName } = req.body;
   const { productPrice } = req.body;
   const { productCategory } = req.body;
+  const { isBottle } = req.body;
+  const { isAccessory } = req.body;
 
-  await product.update({ productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}` }, { where: { id } })
+  await product.update({productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}` }, { where: { id } })
     .then(() => {
       res.sendStatus(200);
     })
