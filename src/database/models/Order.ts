@@ -8,6 +8,7 @@ const Orders = sequelize.define('Orders', {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
+    autoIncrement: true,
   },
   orderdate: {
     type: DataTypes.DATE,

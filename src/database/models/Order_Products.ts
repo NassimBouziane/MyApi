@@ -8,6 +8,7 @@ const OrderProduct = sequelize.define('Order_Products', {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    autoIncrement: true,
     primaryKey: true,
   },
   date: {

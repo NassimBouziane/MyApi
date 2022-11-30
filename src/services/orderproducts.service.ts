@@ -1,14 +1,16 @@
 import { Request, Response } from 'express';
-import Orders from '../database/models/Order';
+import Orders from '../database/models/Order_Products';
 
 // Function create an order
 async function createOrder(req: Request, res: Response) {
-  const { orderdate } = req.body;
-  const { userid } = req.body;
+  const { date } = req.body;
+  const { quantity } = req.body;
+  const { productId } = req.body;
+  const { OrderId } = req.body;
 
   Orders
     .create({
-orderdate: `${orderdate}`, UserId: `${userid}`,
+      date: `${date}`, quantity: `${quantity}`, productId: `${productId}`, OrderId: `${OrderId}`,
     })
     .then((addOrders:any) => {
       res.send(addOrders);
@@ -33,10 +35,14 @@ async function deleteByIdOrder(req: Request, res:Response) {
 // Function update a Order with his ID
 async function updateByIdOrder(req: Request, res:Response) {
   const { id } = req.body;
-  const { orderdate } = req.body;
-  const { userid } = req.body;
+  const { date } = req.body;
+  const { quantity } = req.body;
+  const { productId } = req.body;
+  const { OrderId } = req.body;
 
-  await Orders.update({ orderdate: `${orderdate}`, UserId: `${userid}` }, { where: { id } })
+  await Orders.update({
+    date: `${date}`, quantity: `${quantity}`, productId: `${productId}`, OrderId: `${OrderId}`,
+  }, { where: { id } })
     .then(() => {
       res.sendStatus(200);
     })

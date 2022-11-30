@@ -3,6 +3,7 @@ import routerCategories from './routes/categories.routes';
 import routerOrder from './routes/orders.routes';
 import routerProducts from './routes/products.routes';
 import routerUser from './routes/users.routes';
+import routerOrderProduct from './routes/orderProducts.route'
 
 // Importing all routes
 const express = require('express');
@@ -35,6 +36,7 @@ app.use('/user', routerUser);
 app.use('/product', routerProducts);
 app.use('/order', routerOrder);
 app.use('/categories', routerCategories);
+app.use('/OrderProduct', routerOrderProduct)
 app.options('*', cors(corsOptions)); // Enable pre-flight
 
 app.listen(port, () => {
