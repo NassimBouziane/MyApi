@@ -8,7 +8,7 @@ async function createOrder(req: Request, res: Response) {
 
   Orders
     .create({
-orderdate: `${orderdate}`, UserId: `${userid}`,
+      orderdate: `${orderdate}`, UserId: `${userid}`,
     })
     .then((addOrders:any) => {
       res.send(addOrders);

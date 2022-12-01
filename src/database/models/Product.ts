@@ -36,6 +36,10 @@ export const product = sequelize.define(
         max: 1,
       },
     },
+    productDescription: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,

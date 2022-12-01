@@ -9,10 +9,11 @@ async function createProduct(req: Request, res: Response) {
   const { productCategory } = req.body;
   const { isBottle } = req.body;
   const { isAccessory } = req.body;
+  const { productDescription } = req.body;
 
   product
     .create({
-      productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}`
+      productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}`, productDescription: `${productDescription}`,
     })
     .then((addproduct:any) => {
       res.send(addproduct);
@@ -43,7 +44,9 @@ async function updateByIdProduct(req: Request, res:Response) {
   const { isBottle } = req.body;
   const { isAccessory } = req.body;
 
-  await product.update({productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}` }, { where: { id } })
+  await product.update({
+    productName: `${productName}`, productPrice: `${productPrice}`, CategoryId: `${productCategory}`, isBottle: `${isBottle}`, isAccessory: `${isAccessory}`,
+  }, { where: { id } })
     .then(() => {
       res.sendStatus(200);
     })
